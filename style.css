@@ -1,0 +1,155 @@
+/* Dark background & smooth font */
+body {
+  background: #181A1B;
+  color: #F8F8F2;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  transition: background 0.7s;
+  text-align: center;
+}
+
+/* Navigation */
+nav {
+  background: #232526;
+  box-shadow: 0 2px 16px #0008;
+  display: flex;
+  gap: 30px;
+  padding: 16px 48px;
+  border-radius: 0 0 12px 12px;
+  animation: navFade 1.2s ease-in;
+  text-align: center;
+}
+
+@keyframes navFade {
+  from { opacity: 0; transform: translateY(-20px);}
+  to   { opacity: 1; transform: translateY(0);}
+}
+
+nav a {
+  color: #9A86FD;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  position: relative;
+  transition: color 0.4s;
+}
+
+nav a::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #9A86FD 25%, #FF6E6A 100%);
+  transition: width 0.3s;
+  position: absolute;
+  left: 0; bottom: -4px;
+}
+nav a:hover {
+  color: #FF6E6A;
+}
+nav a:hover::after {
+  width: 100%;
+}
+
+/* Main container styling with fade-in effect */
+.main, form, #tickets {
+  background: #232526;
+  border-radius: 16px;
+  margin: 40px auto;
+  padding: 32px;
+  max-width: 400px;
+  box-shadow: 0 6px 32px #0004;
+  animation: fadeIn 1.3s both;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: scale(0.97);}
+  80%{ opacity: 0.7; }
+  100%{ opacity: 1; transform: scale(1);}
+}
+
+/* Inputs and buttons with transitions */
+input, button {
+  padding: 10px;
+  margin: 12px 0;
+  width: 100%;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 1.05rem;
+  background: #292b2f;
+  color: #F8F8F2;
+}
+
+input {
+  box-shadow: 0 2px 6px #0004;
+  border: 1px solid #9A86FD;
+  transition: box-shadow 0.4s, border-color 0.4s;
+}
+
+input:focus {
+  border-color: #FF6E6A;
+  box-shadow: 0 0 8px #FF6E6A60;
+}
+
+button {
+  background: linear-gradient(90deg, #9A86FD 60%, #FF6E6A);
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 2px 12px #ff6e6a40;
+  cursor: pointer;
+  transition: background 0.4s, transform 0.2s;
+  border-radius: 100px;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #FF6E6A 60%, #9A86FD);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 24px #9A86FD30;
+}
+
+/* Animation for ticket entries */
+#tickets div {
+  margin-bottom: 26px;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed #444;
+  animation: ticketSlideIn 0.8s cubic-bezier(.22,1,.36,1.11);
+  transition: background 0.6s;
+}
+#tickets div:hover {
+  background: #1a181c;
+}
+
+@keyframes ticketSlideIn {
+  from { opacity: 0; transform: translateX(-24px);}
+  to   { opacity: 1; transform: translateX(0);}
+}
+
+/* Typography adjustments */
+h1, h2 {
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: 0;
+  color: #9A86FD;
+  text-shadow: 2px 2px 14px #0008;
+  animation: fadeInHeading 0.9s;
+}
+
+@keyframes fadeInHeading {
+  from { opacity: 0; transform: scale(0.9);}
+  to   { opacity: 1; transform: scale(1);}
+}
+
+p, label {
+  font-size: 1.04rem;
+  color: #ddddff;
+  transition: color 0.4s;
+}
+
+/* Responsive */
+@media (max-width:600px) {
+  .main, form, #tickets { max-width: 98vw; padding: 10vw; border-radius: 0; }
+  nav { flex-direction: column; gap: 10px; padding: 8px 4vw;}
+}

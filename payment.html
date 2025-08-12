@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css" />
+<title>Book Ticket</title></head>
+<body>
+  <h2>Book a Ticket</h2>
+  <form onsubmit="book(event)">
+    <input name="event" value="Summer Music Fest" required/><br/>
+    <input name="venue" value="Grand City Hall" required/><br/>
+    <input name="date" value="2025-08-20" required/><br/>
+    <input name="time" value="19:00" required/><br/>
+    <input name="amount" value="500" required/> (Rs.)<br/>
+    <button type="submit">Book and Pay</button>
+  </form>
+  <p><a href="index.html">Back to Home</a></p>
+  <script>
+    function book(e) {
+      e.preventDefault();
+      // Demo: Save booking to localStorage
+      let bookings = JSON.parse(localStorage.getItem('tickets')||'[]');
+      const form = e.target;
+      bookings.push({
+        event: form.event.value, venue: form.venue.value, date: form.date.value,
+        time: form.time.value, amount: form.amount.value
+      });
+      localStorage.setItem('tickets', JSON.stringify(bookings));
+      alert("Payment successful! Booking confirmed (demo only)");
+      location.href = 'profile.html';
+    }
+  </script>
+</body>
+</html>

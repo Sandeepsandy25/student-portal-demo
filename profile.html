@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css" />
+<title>My Tickets</title></head>
+<body>
+  <h2>Booked Tickets</h2>
+  <div id="tickets"></div>
+  <p><a href="index.html">Back to Home</a></p>
+  <script>
+    const tickets = JSON.parse(localStorage.getItem('tickets')||'[]');
+    const div = document.getElementById('tickets');
+    if (!tickets.length) div.innerHTML = "<p>No tickets booked yet.</p>";
+    else {
+      tickets.forEach(t => {
+        div.innerHTML += `<div>
+          <p><b>Event:</b> ${t.event}</p>
+          <p><b>Venue:</b> ${t.venue}</p>
+          <p><b>Date:</b> ${t.date}</p>
+          <p><b>Time:</b> ${t.time}</p>
+          <p><b>Amount:</b> ₹${t.amount}</p>
+          <hr/>
+        </div>`;
+      });
+    }
+  </script>
+</body>
+</html>
